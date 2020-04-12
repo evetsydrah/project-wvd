@@ -4,7 +4,7 @@
     "location": "<region>",
     "dependsOn": [],
     "tags": {
-        "imagebuilderTemplate": "windows2019"
+        "imagebuilderTemplate": "windows2019multi"
             },
 
     "properties": {
@@ -13,18 +13,14 @@
 
         "vmProfile": 
                 {
-                "vmSize": "Standard_D1_v2",
+                "vmSize": "Standard_D2s_v3",
                 "osDiskSizeGB": 127
                 },
         
-        "source": {
-            "type": "PlatformImage",
-                "publisher": "MicrosoftWindowsServer",
-                "offer": "WindowsServer",
-                "sku": "2019-Datacenter",
-                "version": "latest"
-            
-        },
+        "source": { 
+            "type": "ManagedImage", 
+                "imageId": "/subscriptions/<subscriptionID>/resourceGroups/<rgname>/providers/Microsoft.Compute/images/<srcImageName>"
+        }
         "customize": [
             {
                 "type": "PowerShell",
